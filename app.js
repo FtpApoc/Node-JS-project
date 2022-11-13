@@ -1,6 +1,7 @@
 const express = require('express')();
 const path = require('path');
 const chalk = require('chalk');
+const debug = require('debug')('app');
 const app = express;
 
 app.get('/',function(req,res){
@@ -8,5 +9,5 @@ app.get('/',function(req,res){
 })
 
 app.listen(3000,function(){
-  console.log('listening on port ' + chalk.green('3000'));
+  debug('listening on port ' + chalk.green('3000'));
 })
