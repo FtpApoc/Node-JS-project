@@ -3,6 +3,7 @@ const path = require('path');
 const chalk = require('chalk');
 const debug = require('debug')('app');
 const morgan = require('morgan');
+const name = ('Colour Matcher');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -16,7 +17,7 @@ app.set('views', './src/views');
 app.set('view engine','ejs');
 
 app.get('/',function(req,res){
-  res.render('index', {list: ['a','b'], title: "Colour Matcher"});
+  res.render('index', {list: ['a','b','c'], title: name});
 })
 
 app.listen(port,function(){
