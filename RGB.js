@@ -1,8 +1,13 @@
 const path = require('path')
 const getColours = require('get-image-colors')
+//const urlPixels = require("getpixels")(url[,type],cb(err, pixels))
 
-getColours(path.join(__dirname, "TestColour.png")).then(colors => {
+const options = {
+  type: 'image/png'
+}
 
-});
+console.log(__dirname)
 
-colors.map(colour => color.hex());
+getColours(path.join(__dirname, "JPEGtest.jpg"),options).then(colors => {
+  console.log(colors.map(colour => colour.hex()));
+  });
