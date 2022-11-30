@@ -22,10 +22,11 @@ BookRouter.route('/')
     res.render('books',
       {
         nav: [
-          {link:'/books',title:'Books'},
-          {link:'/authors',title:'Authors'}
+          {link:'/books', title:'Books'},
+          {link:'/authors', title:'Authors'}
         ],
         title:'Book List',
       });
   });
+
   module.exports = BookRouter

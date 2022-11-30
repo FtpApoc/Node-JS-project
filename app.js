@@ -21,18 +21,26 @@ app.set('view engine','ejs');
 const BookRouter = require('./src/routes/BookRoutes');
 app.use('/books',BookRouter);
 
-app.get('/',function(req,res) {
-  res.render('index',
-    {
+app.get('/', function (req, res) {
+    res.render('index', {
         nav: [
-          {link: '/books', title: 'Books'},
-          {link: '/authors', title: 'Authors'}
+            {link: '/books', title: 'Books'},
+            {link: '/authors', title: 'Authors'}
         ],
-        title: 'library'
-      }
-  );
+        title: 'Library'
+    });
+});
+
+app.get('/books', function (req, res) {
+    res.render('books', {
+        nav: [
+            {link: '/books', title: 'Books'},
+            {link: '/authors', title: 'Authors'}
+        ],
+        title: 'Books'
+    });
 });
 
 app.listen(port,function(){
-  debug('listening on port ' + chalk.green(port));
-})
+  debug(`listening on port ${chalk.green(port)}`)
+});
