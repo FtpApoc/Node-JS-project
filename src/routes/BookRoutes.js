@@ -19,7 +19,19 @@ const BookRouter = express.Router();
 const nav = [
     {link: '/books', title: 'Books'},
     {link: '/authors', title: 'Authors'}
-];
+];BookRouter.get('/', function (req, res) {
+    res.render('index', {
+        nav,
+        title: 'Library'
+    });
+});
+
+BookRouter.get('/books', function (req, res) {
+    res.render('books', {
+        nav,
+        title: 'Books'
+    });
+});
 
 BookRouter.get('/', function (req, res) {
     res.render('index', {
