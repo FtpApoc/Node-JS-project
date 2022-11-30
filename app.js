@@ -28,7 +28,7 @@ app.get('/',function(req,res) {
           {link: '/books', title: 'Books'},
           {link: '/authors', title: 'Authors'}
         ],
-        title: 'library'
+        title: 'Library'
       }
   );
 });
