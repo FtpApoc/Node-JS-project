@@ -9,8 +9,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 app.use(morgan('tiny'))
 
-const BookRouter = require('./src/routes/BookRoutes')
-app.use('/books', BookRouter)
+
 
 app.use(express.static(path.join(__dirname, '/public')));
 app.use('/css', express.static(path.join(__dirname, '/node_modules/bootstrap/dist/css')))
@@ -19,7 +18,10 @@ app.use('/js', express.static(path.join(__dirname, '/node_modules/jquery/dist'))
 app.set('views', './src/views');
 app.set('view engine','ejs');
 
-app.get('/',function(req,res){
+const BookRouter = require('./src/routes/BookRoutes');
+app.use('/books',BookRouter);
+
+app.get('/',function(req,res) {
   res.render('index',
     {
         nav: [
