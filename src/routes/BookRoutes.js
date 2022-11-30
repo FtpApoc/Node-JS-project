@@ -3,13 +3,13 @@ const BookRouter = express.Router();
 
 const books = [
   {
-    title: 'sense and sensibility',
+    title: 'Sense and Sensibility',
     genre: 'fiction',
     author: 'Jane Austen',
     read: false
   },
   {
-    title: 'the sign of the four',
+    title: 'The Sign of the Four',
     genre: 'mystery',
     author: 'Sir Artur Conan Doyle',
     read: true
@@ -19,7 +19,7 @@ const books = [
 
 BookRouter.route('/')
   .get((req, res) => {
-    res.render('books',
+    res.render('bookListView',
       {
         nav: [
           {link:'/books',title:'Books'},
@@ -31,3 +31,18 @@ BookRouter.route('/')
   });
 
   module.exports = BookRouter
+
+BookRouter.route('/:id')
+  .get((req,res) => {
+    const id = req.params.id;
+    res.render(
+      'bookView',
+      {
+          nav: [
+            {link:'/books', title:'Books'},
+            {link:'/authors', title:'Authors'}
+          ],
+          title: 'Book',
+          book: books[id]
+    });
+  });
