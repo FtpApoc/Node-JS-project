@@ -16,17 +16,24 @@ const BookRouter = express.Router();
 //   }
 // ]
 
+const nav = [
+    {link: '/books', title: 'Books'},
+    {link: '/authors', title: 'Authors'}
+];
 
-BookRouter.route('/')
-  .get((req, res) => {
-    res.render('books',
-      {
-        nav: [
-          {link:'/books', title:'Books'},
-          {link:'/authors', title:'Authors'}
-        ],
-        title:'Book List',
-      });
-  });
+BookRouter.get('/', function (req, res) {
+    res.render('index', {
+        nav,
+        title: 'Library'
+    });
+});
 
-  module.exports = BookRouter
+BookRouter.get('/books', function (req, res) {
+    res.render('books', {
+        nav,
+        title: 'Books'
+    });
+});
+
+
+module.exports = BookRouter
